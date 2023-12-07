@@ -14,6 +14,9 @@ dependencies:
   react:
     specifier: ^18
     version: 18.2.0
+  react-compare-slider:
+    specifier: ^3.0.1
+    version: 3.0.1(react-dom@18.2.0)(react@18.2.0)
   react-dom:
     specifier: ^18
     version: 18.2.0(react@18.2.0)
@@ -31,6 +34,9 @@ devDependencies:
   autoprefixer:
     specifier: ^10.0.1
     version: 10.4.16(postcss@8.4.32)
+  clsx:
+    specifier: ^2.0.0
+    version: 2.0.0
   eslint:
     specifier: ^8
     version: 8.55.0
@@ -46,6 +52,9 @@ devDependencies:
   prettier-plugin-tailwindcss:
     specifier: ^0.5.9
     version: 0.5.9(prettier@3.1.0)
+  tailwind-merge:
+    specifier: ^2.1.0
+    version: 2.1.0
   tailwindcss:
     specifier: ^3.3.0
     version: 3.3.6
@@ -671,6 +680,11 @@ packages:
   /client-only@0.0.1:
     resolution: {integrity: sha512-IV3Ou0jSMzZrd3pZ48nLkT9DA7Ag1pnPzaiQhpW7c3RbcqqzvzzVu+L8gfqMp/8IM2MQtSiqaCxrrcfu8I8rMA==}
     dev: false
+
+  /clsx@2.0.0:
+    resolution: {integrity: sha512-rQ1+kcj+ttHG0MKVGBUXwayCCF1oh39BF5COIpRzuCEv8Mwjv0XucrI2ExNTOn9IlLifGClWQcU9BrZORvtw6Q==}
+    engines: {node: '>=6'}
+    dev: true
 
   /color-convert@2.0.1:
     resolution: {integrity: sha512-RRECPsj7iu/xb5oKYcsFHSppFNnsj/52OVTRKb4zP5onXwVF3zVmmToNcOfGC+CRDpfK/U584fMg38ZHCaElKQ==}
@@ -2188,6 +2202,17 @@ packages:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
     dev: true
 
+  /react-compare-slider@3.0.1(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-+y7x30GCMmk7tl0lBgWRdEjOEMSD4tgPPVyQfBjN6LxU0gdYc4n0+XvnwTJQWwJPd+t2JuniYi1ZxczFVf4fnw==}
+    engines: {node: '>=16.9.0'}
+    peerDependencies:
+      react: '>=16.8'
+      react-dom: '>=16.8'
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
+
   /react-dom@18.2.0(react@18.2.0):
     resolution: {integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==}
     peerDependencies:
@@ -2479,6 +2504,12 @@ packages:
   /supports-preserve-symlinks-flag@1.0.0:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
+    dev: true
+
+  /tailwind-merge@2.1.0:
+    resolution: {integrity: sha512-l11VvI4nSwW7MtLSLYT4ldidDEUwQAMWuSHk7l4zcXZDgnCRa0V3OdCwFfM7DCzakVXMNRwAeje9maFFXT71dQ==}
+    dependencies:
+      '@babel/runtime': 7.23.5
     dev: true
 
   /tailwindcss@3.3.6:
