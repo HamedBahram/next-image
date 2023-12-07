@@ -9,8 +9,8 @@ dependencies:
     specifier: 14.0.3
     version: 14.0.3(react-dom@18.2.0)(react@18.2.0)
   next-cloudinary:
-    specifier: ^5.10.0
-    version: 5.10.0(next@14.0.3)(react@18.2.0)
+    specifier: ^5.11.0
+    version: 5.11.0(next@14.0.3)(react@18.2.0)
   react:
     specifier: ^18
     version: 18.2.0
@@ -81,8 +81,8 @@ packages:
       regenerator-runtime: 0.14.0
     dev: true
 
-  /@cloudinary-util/url-loader@3.18.0:
-    resolution: {integrity: sha512-b6HL2OS3Bdi0lWcY9ySyIgN2Z2NDPGxfnQccV02LY51Fv/ujDKZNxqtr3NWRLLpud+e7kh5WmddV9uqUB7ZwTQ==}
+  /@cloudinary-util/url-loader@3.20.0:
+    resolution: {integrity: sha512-fK7AmOTG360giHcNHQhmJqDGutuCpnqiHW6/0pJbviETZQImY2/xNgpdfdN/yiVJZY6GDFaOyYt+ehP1HFmqKA==}
     dependencies:
       '@cloudinary-util/util': 2.3.0
       '@cloudinary/url-gen': 1.14.0
@@ -1825,13 +1825,13 @@ packages:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
     dev: true
 
-  /next-cloudinary@5.10.0(next@14.0.3)(react@18.2.0):
-    resolution: {integrity: sha512-FmLvteYJjpvE69pNZlp/xzwf32/iNuYM9INrh0GTNhgKxoKP/Ej/ij+kjKkZq8eAA8epSeDh3IUoewwRpJfuTQ==}
+  /next-cloudinary@5.11.0(next@14.0.3)(react@18.2.0):
+    resolution: {integrity: sha512-gTPqqMG7hzoeA2wEBpUR51FExVFq3+p1qZU52xlwejpEGYaGVIVzpILOA0G2i9s0jyxudWuA5GLFh2A/bvQmFw==}
     peerDependencies:
       next: ^12 || ^13 || ^14
       react: ^17 || ^18
     dependencies:
-      '@cloudinary-util/url-loader': 3.18.0
+      '@cloudinary-util/url-loader': 3.20.0
       '@cloudinary-util/util': 2.3.0
       next: 14.0.3(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
