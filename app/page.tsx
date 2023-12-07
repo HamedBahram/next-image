@@ -8,6 +8,8 @@ import CldUploadButton from '@/components/CldUploadButton'
 
 export default function Home() {
   const [resource, setResource] = useState<string | any>()
+  const [restoreLoaded, setRestoreLoaded] = useState(false)
+  const [compare, setCompare] = useState(false)
 
   return (
     <section className='flex h-screen bg-gradient-to-br from-gray-700 to-gray-900 py-24 text-white'>
@@ -17,11 +19,15 @@ export default function Home() {
             Next Image Transform
           </h1>
 
-          <div className='mt-10 text-center'>
+          <div className='mt-10 flex justify-center gap-6 text-center'>
             <CldUploadButton
               uploadPreset='friendsbook'
-              className='rounded-lg bg-white px-4 py-2 text-gray-900'
-              onClick={() => setResource(undefined)}
+              className='rounded-lg bg-white px-4 py-1 font-medium text-gray-900'
+              onClick={() => {
+                setResource(undefined)
+                setRestoreLoaded(false)
+                setCompare(false)
+              }}
               onSuccess={(result, { widget }) => {
                 setResource(result?.info)
                 widget.close()
@@ -29,30 +35,66 @@ export default function Home() {
             >
               Upload Image
             </CldUploadButton>
+
+            <button
+              className='rounded-lg bg-white px-4 py-1 font-medium text-gray-900'
+              onClick={() => setCompare(!compare)}
+            >
+              {compare ? 'Side by Side' : 'Compare'}
+            </button>
           </div>
 
           {resource?.public_id && (
             <div className='mt-10 flex items-center justify-center'>
-              <ReactCompareSlider
-                itemOne={
+              {compare ? (
+                <ReactCompareSlider
+                  itemOne={
+                    <CldImage
+                      width={400}
+                      height={400}
+                      src={resource?.public_id}
+                      alt=''
+                    />
+                  }
+                  itemTwo={
+                    <CldImage
+                      width={400}
+                      height={400}
+                      src={resource?.public_id}
+                      improve='indoor:50'
+                      restore
+                      alt=''
+                    />
+                  }
+                  className='rounded-lg'
+                />
+              ) : (
+                <div className='flex gap-4'>
                   <CldImage
                     width={400}
                     height={400}
                     src={resource?.public_id}
                     alt=''
+                    className='rounded-lg'
                   />
-                }
-                itemTwo={
-                  <CldImage
-                    width={400}
-                    height={400}
-                    src={resource?.public_id}
-                    improve='indoor:50'
-                    restore
-                    alt=''
-                  />
-                }
-              />
+
+                  <div className='relative'>
+                    {!restoreLoaded && (
+                      <div className='absolute inset-0 flex animate-pulse items-center justify-center rounded-lg bg-white' />
+                    )}
+                    <CldImage
+                      width={400}
+                      height={400}
+                      src={resource?.public_id}
+                      improve='indoor:50'
+                      restore
+                      alt=''
+                      className='rounded-lg'
+                      onLoad={() => setRestoreLoaded(true)}
+                    />
+                  </div>
+                </div>
+              )}
             </div>
           )}
         </div>
