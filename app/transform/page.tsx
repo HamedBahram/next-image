@@ -10,6 +10,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 
 import CldUploadButton from '@/components/CldUploadButton'
 import CldImage from '@/components/CldImage'
+import { getCldImageUrl } from 'next-cloudinary'
 
 const initialTransformations = {
   restore: false,
@@ -29,6 +30,41 @@ export default function Example() {
   )
 
   const transformationsActive = Object.values(transformations).some(Boolean)
+
+  const handleDownload = async () => {
+    const url = getCldImageUrl({
+      src: resource?.public_id,
+      width: resource?.width,
+      height: resource?.height,
+      ...(transformations.restore
+        ? { restore: true, improve: 'indoor:50' }
+        : {}),
+      ...(transformations.removeBackground
+        ? { removeBackground: true, background: 'white' }
+        : {}),
+      ...(transformations.background
+        ? {
+            removeBackground: true,
+            background: `rgb:${transformations.background}`
+          }
+        : {})
+    })
+
+    const res = await fetch(url)
+    const blob = await res.blob()
+    const href = URL.createObjectURL(blob)
+
+    const link = Object.assign(document.createElement('a'), {
+      href,
+      style: { display: 'none' },
+      download: 'image'
+    })
+
+    document.body.appendChild(link)
+    link.click()
+    URL.revokeObjectURL(href)
+    link.remove()
+  }
 
   return (
     <div>
@@ -182,7 +218,10 @@ export default function Example() {
 
                       <li>
                         <h3 className='mb-3 text-gray-400'>Download</h3>
-                        <button className='rounded-lg bg-white px-3 py-1 text-sm font-medium text-gray-900'>
+                        <button
+                          className='rounded-lg bg-white px-3 py-1 text-sm font-medium text-gray-900'
+                          onClick={handleDownload}
+                        >
                           Download Image
                         </button>
                       </li>
@@ -310,7 +349,10 @@ export default function Example() {
 
               <li>
                 <h3 className='mb-3 text-gray-400'>Download</h3>
-                <button className='rounded-lg bg-white px-3 py-1 text-sm font-medium text-gray-900'>
+                <button
+                  className='rounded-lg bg-white px-3 py-1 text-sm font-medium text-gray-900'
+                  onClick={handleDownload}
+                >
                   Download Image
                 </button>
               </li>
@@ -366,6 +408,7 @@ export default function Example() {
         </a>
       </div>
 
+      {/* Main content */}
       <main className='py-10 lg:pl-72'>
         <div className='px-4 sm:px-6 lg:px-8'>
           {/* Controls */}
